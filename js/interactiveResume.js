@@ -437,6 +437,13 @@ let detailRender = (function () {
     }
 })();
 
+/*
+* 以后真实项目中，如果页面中有滑动的需求，我们一定要把document本身滑动的默认行为阻止掉（如果不阻止：浏览器中预览，会触发下拉刷新或者左右滑动切换页卡等功能）
+* */
+$(document).on('touchstart touchmove touchend',(ev)=>{
+    ev.preventDefault();
+});
+
 /*HASH路由处理模型*/
 //=>开发过程中，由于当前项目版块众多（每一个版块都是一个单例），我们最好规划一种机制：通过标识的判断可以让程序值执行对应版块的内容，这样开发哪个版块，我们就把标识改为啥（HASH路由控制）
 let url=window.location.href;//=>获取当前页面的url地址 location.href="xxx"这种写法是让其跳转到指定的xxx页面
