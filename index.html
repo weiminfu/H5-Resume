@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交互简历结构样式（rem结构）interactiveResume</title>
+    <!--开发环境下使用less：1.引入less文件，修改为rel="stylesheet/less"；2.导入less.js编译-->
+    <!--DEV开发环境下-->
+    <link rel="stylesheet" href="cs/swiper.min.css">
+    <!--<link rel="stylesheet/less" href="cs/interactiveResume.less">
+    <script src="js/less-2.5.3.min.js"></script>
+-->
+
+    <!--引入编译后的css文件-->
+    <link rel="stylesheet" href="cs/interactiveResume.min.css">
+    <!--prefixfree.min.js：设置前缀的插件-->
+    <script src="js/prefixfree.min.js"></script>
+
+    <!--rem-->
+    <script>
+        /*根据当前设备的宽度，动态计算出rem的换算比例，实现页面中元素的等比缩放*/
+        ~function anonymous(window) {
+            let computedREM=function computedREM() {
+                let winW=document.documentElement.clientWidth;
+                let desW=640;
+                if (winW>=640) {
+                    document.documentElement.style.fontSize="100px";
+                    return;/*如果当前屏幕大于640px，你们直接让根元素html的字体大小fontsize为100px，结束代码*/
+                }
+                document.documentElement.style.fontSize=winW/desW*100+"px";
+            };
+            computedREM();
+            window.addEventListener("resize",computedREM);/*窗口改变，重新计算*/
+        }(window);
+    </script>
+</head>
+<body>
+<!--外面套一层mainBox盒子的目的：控制当前页面的最大宽度，防止把做好的页面放在PC端预览的时候满屏，这样字体和盒子大小等会肆意拉伸-->
+<main class="mainBox">
+    <!--loading-->
+ <section class="loadingBox">
+     <div class="title">
+         <h1>我的简历</h1>
+         <h2>H5场景交互型简历</h2>
+     </div>
+     <div class="progress">
+         <div class="current"></div>
+     </div>
+ </section>
+
+    <!--phone-->
+    <section class="phoneBox">
+        <h2>
+            <img src="img/zf_phoneLogo.png" alt="">
+            <span>00:00</span>
+        </h2>
+        <div class="answer">
+            <div class="markMove"></div>
+            <a href="javascript:;" class="markLink"></a>
+        </div>
+        <div class="hang">
+            <a href="javascript:;" class="markLink"></a>
+        </div>
+        <!--audio-->
+        <audio src="audio/bell.mp3" loop="loop" preload="none" id="answerBell"></audio>
+        <audio src="audio/say.mp3" preload="none" id="introduction"></audio>
+    </section>
+
+    <!--message-->
+    <section class="messageBox">
+        <ul class="wrapper clearfix">
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                面试官你好，我是前端工程师！这是我做的交互式简历
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageLogo.png" alt="" class="pic">
+                哇塞，做得不错呀，介绍一下你的专业技能把
+            </li>
+            <!--后期会在这个位置手动增加一条新的记录-->
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                本人擅长：原生JS/es6/promise/组件开发
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageLogo.png" alt="" class="pic">
+                框架会吗？我们公司现在使用的是vue和react
+            </li>
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                之前的公司用的是react，个人对react渲染原理、MVC模式、spa单页面应用、DIFF差异渲染机制，以及redux原理都有研究，掌握的很熟练，对于vue用其开发过
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageLogo.png" alt="" class="pic">
+                webpack会吗？
+            </li>
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                之前项目都是基于脚手架完成的，自己偶尔会修改一下webpack配置项
+            </li>
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                不过目前正在深入研究，可以搭建简单的脚手架
+            </li>
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                同时对于node和express等后台开发也有所涉猎，只是没有应用到项目实战中，目前也在研究，对这个比较感兴趣
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageLogo.png" alt="" class="pic">
+                你认为你的有点是啥？和其他人对比，公司为何要用你？
+            </li>
+            <li class="self">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageStudent.png" alt="" class="pic">
+                肯吃苦，肯加班、能力高、要钱少...这些够吗？
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="./img/zf_messageLogo.png" alt="" class="pic">
+                就是你啦，明天来上班！
+            </li>
+        </ul>
+        <div class="keyBoard">
+            <span></span><!--好的，我马上给您展示！-->
+            <a href="javascript:;" class="submit"></a>
+        </div>
+
+        <audio src="audio/music.mp3" preload="none" loop id="magicMusic"></audio>
+    </section>
+
+    <!--cube-->
+    <section class="cubeBox">
+        <ul class="cube">
+            <li><img src="img/zf_cube1.png" alt=""></li>
+            <li><img src="img/zf_cube2.png" alt=""></li>
+            <li><img src="img/zf_cube3.png" alt=""></li>
+            <li><img src="img/zf_cube4.png" alt=""></li>
+            <li><img src="img/zf_cube5.png" alt=""></li>
+            <li><img src="img/zf_cube6.png" alt=""></li>
+        </ul>
+        <img src="img/zf_cubeTip.png" alt="" class="tip">
+    </section>
+
+    <!--detail-->
+    <section class="detailBox">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--page1-->
+                <div class="swiper-slide page1">
+                    <dl>
+                        <dt>课程大纲</dt>
+                        <dd><em>01</em><a href="#">html5+css3+移动端响应式布局开发及相关插件的使用</a></dd>
+                        <dd><em>02</em><a href="#">JS中的闭包及堆栈内存以及this的处理</a></dd>
+                        <dd><em>03</em><a href="#">JS中的面向对象编程，可以基于面向对象封装组件和插件等</a></dd>
+                        <dd><em>04</em><a href="#">ES6中的新特性及数组对象里面的常用方法</a></dd>
+                        <dd><em>05</em><a href="#">JS中的同步异步编程及promise设计模式</a></dd>
+                        <dd><em>06</em><a href="#">JS中的事件委托及事件池，掌握发布订阅设计模式</a></dd>
+                        <dd><em>07</em><a href="#">JS中的DOM操作以及重绘和回流的优化</a></dd>
+                        <dd><em>08</em><a href="#">HTTP交互及ajax库的封装以及跨域数据共享</a></dd>
+                        <dd><em>09</em><a href="#">vue：vue-cli、vue-router、vuex、vue element等全家桶</a></dd>
+                        <dd><em>10</em><a href="#">react：react-router、react-redux、DVA、axios、ant等</a></dd>
+                        <dd><em>11</em><a href="#">辅助技能：node、webpack、git等</a></dd>
+                    </dl>
+                </div>
+                <!--page2-->
+                <div class="swiper-slide page2">
+                    <h2>课程体系</h2>
+                    <img src="img/zf_course1.png" alt="">
+                    <img src="img/zf_course2.png" alt="">
+                    <img src="img/zf_course3.png" alt="">
+                    <img src="img/zf_course4.png" alt="">
+                    <img src="img/zf_course5.png" alt="">
+                    <img src="img/zf_course6.png" alt="">
+                    <img src="img/zf_course.png" alt="">
+                </div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--import JS-->
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<!--Makisu是一个jQuery和css3制作3D下拉菜单的插件，目前仅在chrome下能正常运行。-->
+<script src="js/makisu.min.js"></script>
+<script src="js/interactiveResume.js"></script>
+</body>
+</html>
